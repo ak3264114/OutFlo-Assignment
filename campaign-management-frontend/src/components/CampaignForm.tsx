@@ -20,7 +20,6 @@ export const CampaignForm: React.FC<CampaignFormProps> = ({ isEditing = false })
     accountIDs: []
   });
   
-  // For handling multiple inputs in lead and accountID fields
   const [leadInput, setLeadInput] = useState('');
   const [accountIdInput, setAccountIdInput] = useState('');
 
@@ -155,8 +154,8 @@ export const CampaignForm: React.FC<CampaignFormProps> = ({ isEditing = false })
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
             >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
             </select>
           </div>
           

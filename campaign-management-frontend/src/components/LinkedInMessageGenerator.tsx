@@ -24,14 +24,10 @@ export const LinkedInMessageGenerator: React.FC = () => {
         try {
             setIsGenerating(true);
             setError(null);
+            const response = await generateLinkedInMessage(profile);
 
-            let message = '';
-
-
-            message = await generateLinkedInMessage(profile);
-
-            console.log("Generated LinkedIn Message:\n", message);
-            setGeneratedMessage(message);
+            console.log("Generated LinkedIn Message:\n", response.message);
+            setGeneratedMessage(response.message ?? '');
         } catch (err) {
             setError('Failed to generate message. Please try again.');
             console.error(err);
@@ -62,11 +58,9 @@ export const LinkedInMessageGenerator: React.FC = () => {
 
                 <div className="p-6">
                     <div className="grid md:grid-cols-2 gap-6">
-                        {/* Left column: LinkedIn Profile Form */}
                         <div className="space-y-6">
                             <h3 className="text-lg font-medium text-gray-900 border-b pb-2">LinkedIn Profile Data</h3>
 
-                            {/* Basic Information */}
                             {['name', 'job_title', 'company', 'location'].map((field) => (
                                 <div key={field}>
                                     <label htmlFor={field} className="block text-sm font-medium text-gray-700">
@@ -97,7 +91,7 @@ export const LinkedInMessageGenerator: React.FC = () => {
 
 
 
-                            {/* Action Buttons */}
+     
                             <div className="flex gap-3 pt-4">
                                 <button
                                     type="button"
@@ -117,7 +111,7 @@ export const LinkedInMessageGenerator: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Right column: Generated Message */}
+                   
                         <div>
                             <h3 className="text-lg font-medium text-gray-900 border-b pb-2 mb-4">Generated Message</h3>
 
