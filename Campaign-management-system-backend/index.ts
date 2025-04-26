@@ -4,6 +4,7 @@ import cors from 'cors';
 import { connectDB } from './config/dbConnect';
 import campaignRoutes from './routes/campaignRoutes';
 import { errorHandler } from './helper/customError';
+import personalizedMessageRoutes from './routes/personalizedMessageRoutes';
 
 dotenv.config();
 
@@ -13,7 +14,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use('', campaignRoutes);
+
+
+
+app.use('/campaigns', campaignRoutes);
+app.use('/personalized-message', personalizedMessageRoutes);
 
 app.use(errorHandler);
 

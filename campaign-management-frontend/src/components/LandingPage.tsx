@@ -111,10 +111,10 @@ const LandingPage: React.FC = () => {
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold mb-8 text-gray-800">Ready to boost your lead generation?</h2>
             <Link 
-              to="/campaigns/new" 
+              to="/message-generator" 
               className="bg-indigo-600 text-white font-bold px-8 py-4 rounded-lg hover:bg-indigo-700 transition duration-300 inline-block"
             >
-              Start a New Campaign
+              Generate Personalize Messages
             </Link>
           </div>
         </section>

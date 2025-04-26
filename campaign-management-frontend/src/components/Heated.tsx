@@ -1,6 +1,13 @@
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
       <nav className="bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-6 py-4">
@@ -12,7 +19,8 @@ const Header: React.FC = () => {
               <h1 className="text-xl font-bold text-indigo-600">Campaign Manager</h1>
             </Link>
             
-            <div className="hidden md:flex space-x-6">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-6 items-center">
               <Link to="/campaigns" className="text-gray-700 hover:text-indigo-600 font-medium">
                 Campaigns
               </Link>
@@ -20,21 +28,55 @@ const Header: React.FC = () => {
                 New Campaign
               </Link>
               <Link 
-              to="/message-generator" 
-              className="bg-indigo-800 text-white border-2 border-indigo-800 font-bold px-6 py-3 rounded-lg hover:bg-indigo-900 hover:border-indigo-900 transition duration-300"
-            >
-              Generate Messages
-            </Link>
+                to="/message-generator" 
+                className="bg-indigo-800 text-white border-2 border-indigo-800 font-bold px-6 py-3 rounded-lg hover:bg-indigo-900 hover:border-indigo-900 transition duration-300"
+              >
+                Generate Messages
+              </Link>
             </div>
             
+            {/* Mobile menu button */}
             <div className="md:hidden">
-              <button className="text-gray-700">
+              <button 
+                className="text-gray-700 focus:outline-none" 
+                onClick={toggleMenu}
+                aria-label="Toggle menu"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
             </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden pt-4 pb-2 border-t mt-4">
+              <div className="flex flex-col space-y-4">
+                <Link 
+                  to="/campaigns" 
+                  className="text-gray-700 hover:text-indigo-600 font-medium px-2 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Campaigns
+                </Link>
+                <Link 
+                  to="/campaigns/new" 
+                  className="text-gray-700 hover:text-indigo-600 font-medium px-2 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  New Campaign
+                </Link>
+                <Link 
+                  to="/message-generator" 
+                  className="bg-indigo-800 text-white border-2 border-indigo-800 font-bold px-4 py-2 rounded-lg hover:bg-indigo-900 hover:border-indigo-900 transition duration-300 text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Generate Messages
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
     );
