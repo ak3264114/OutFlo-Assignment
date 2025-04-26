@@ -7,14 +7,7 @@ import { CampaignForm } from './components/CampaignForm';
 import Header from './components/Heated';
 import LandingPage from './components/LandingPage';
 import Footer from './components/Footer';
-
-
-
-
-
-
-
-
+import { LinkedInMessageGenerator } from './components/LinkedInMessageGenerator';
 
 
 
@@ -31,6 +24,7 @@ function App() {
             <Route path="/campaigns/new" element={<CampaignForm />} />
             <Route path="/campaigns/:id" element={<CampaignDetail />} />
             <Route path="/campaigns/:id/edit" element={<CampaignForm isEditing={true} />} />
+            <Route path="/message-generator" element={<LinkedInMessageGenerator />} />
           </Routes>
         </main>
 

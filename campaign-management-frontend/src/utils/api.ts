@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { LinkedInProfile } from '../types/LinkedInProfile';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL as string;
 
@@ -54,3 +55,14 @@ export const deleteCampaign = async (id: string) => {
     throw new Error('Error deleting campaign');
   }
 };
+export const generateLinkedInMessage = async (profile: LinkedInProfile) => {
+  try {
+    const response = await api.post(`/personalized-message` , profile);
+    return response.data;
+  } catch (error) {
+    throw new Error('Error creating personalized message');
+  }
+};
+
+
+

@@ -19,6 +19,12 @@ const Header: React.FC = () => {
               <Link to="/campaigns/new" className="text-gray-700 hover:text-indigo-600 font-medium">
                 New Campaign
               </Link>
+              <Link 
+              to="/message-generator" 
+              className="bg-indigo-800 text-white border-2 border-indigo-800 font-bold px-6 py-3 rounded-lg hover:bg-indigo-900 hover:border-indigo-900 transition duration-300"
+            >
+              Generate Messages
+            </Link>
             </div>
             
             <div className="md:hidden">
