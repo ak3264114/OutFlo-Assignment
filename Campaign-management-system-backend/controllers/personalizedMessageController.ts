@@ -11,7 +11,6 @@ export const generatePersonalizedMessage = async (
         if (!req.body) {
             return res.status(400).json({ error: true, message: 'Request body is required.' });
         }
-
         const { name, job_title, company, summary } = req.body;
 
         if (!name || !job_title || !company || !summary) {
@@ -27,13 +26,13 @@ export const generatePersonalizedMessage = async (
         
         Keep it concise, natural, and personalized. Avoid sounding robotic or too generic.`;
 
-   
+
         try {
             const response = await axios.post(
                 "https://openrouter.ai/api/v1/chat/completions",
                 {
-                    model: "deepseek/deepseek-r1-zero:free",
-                    messages: [{ role: "user", content: prompt }],
+                    "model": "deepseek/deepseek-r1-zero:free",
+                    "messages": [{ role: "user", content: prompt }],
                 },
                 {
                     headers: {
@@ -43,6 +42,7 @@ export const generatePersonalizedMessage = async (
                 }
             );
 
+    
             const data = response.data;
             let message = data.choices?.[0]?.message?.content || "Failed to generate a message.";
 
